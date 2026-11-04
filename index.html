@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GRITGO - User Guide & Manual</title>
+  <style>
+    /* ================= CSS VARIABLES & RESET ================= */
+    :root {
+      --bg: #0a0e14;
+      --sidebar-bg: #0f1419;
+      --content-bg: #141a23;
+      --text-main: #e8eaed;
+      --text-muted: #9aa0a6;
+      --accent: #00e5ff;
+      --accent-bg: rgba(0, 229, 255, 0.1);
+      --purple: #9b59b6;
+      --green: #4aaa4a;
+      --red: #ff6b4a;
+      --gold: #f1c40f;
+      --border: #2a3142;
+      --font-main: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-family: var(--font-main);
+      line-height: 1.7;
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* ================= SIDEBAR (TABLE OF CONTENTS) ================= */
+    .sidebar {
+      width: 300px;
+      background-color: var(--sidebar-bg);
+      border-right: 1px solid var(--border);
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+      overflow-y: auto;
+      padding: 30px 20px;
+      transition: transform 0.3s ease;
+      z-index: 100;
+    }
+
+    .sidebar h1 {
+      color: var(--accent);
+      font-size: 24px;
+      font-weight: 800;
+      margin-bottom: 10px;
+      letter-spacing: 1px;
+    }
+
+    .sidebar p {
+      color: var(--text-muted);
+      font-size: 13px;
+      margin-bottom: 30px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 20px;
+    }
+
+    .nav-list { list-style: none; }
+    .nav-list li { margin-bottom: 8px; }
+    .nav-list a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 14px;
+      display: block;
+      padding: 10px 15px;
+      border-radius: 8px;
+      transition: all 0.2s;
+      border-left: 3px solid transparent;
+    }
+
+    .nav-list a:hover, .nav-list a.active {
+      background-color: var(--accent-bg);
+      color: var(--accent);
+      border-left-color: var(--accent);
+    }
+
+    /* ================= MAIN CONTENT (THE BOOK) ================= */
+    .content {
+      margin-left: 300px;
+      flex: 1;
+      padding: 50px 60px;
+      max-width: 900px;
+    }
+
+    .chapter {
+      margin-bottom: 60px;
+      animation: fadeIn 0.5s ease;
+    }
+
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+    h2 {
+      color: var(--text-main);
+      font-size: 32px;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    h2 svg { width: 28px; height: 28px; stroke: var(--accent); }
+
+    h3 {
+      color: var(--accent);
+      font-size: 20px;
+      margin: 30px 0 15px 0;
+    }
+
+    p { margin-bottom: 15px; color: #c3c9d1; font-size: 16px; }
+
+    ul, ol { margin-left: 20px; margin-bottom: 20px; color: #c3c9d1; }
+    li { margin-bottom: 10px; }
+    strong { color: var(--text-main); }
+
+    /* ================= CALLOUT BOXES ================= */
+    .callout {
+      background: var(--content-bg);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      padding: 20px;
+      border-radius: 0 12px 12px 0;
+      margin: 25px 0;
+    }
+
+    .callout.tip { border-left-color: var(--green); }
+    .callout.tip h4 { color: var(--green); }
+    
+    .callout.warning { border-left-color: var(--red); }
+    .callout.warning h4 { color: var(--red); }
+
+    .callout h4 { margin-bottom: 8px; font-size: 16px; display: flex; align-items: center; gap: 8px; }
+    .callout p { margin-bottom: 0; font-size: 14px; }
+
+    /* ================= UI MOCKUP ELEMENTS ================= */
+    .ui-element {
+      display: inline-block;
+      background: #1a1f2e;
+      padding: 4px 10px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      font-size: 13px;
+      color: var(--text-main);
+      font-weight: bold;
+      margin: 0 4px;
+    }
+    
+    .ui-btn {
+      display: inline-block;
+      background: var(--accent);
+      color: #000;
+      padding: 6px 15px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: bold;
+      margin: 0 4px;
+    }
+
+    /* ================= MOBILE RESPONSIVE ================= */
+    .mobile-header { display: none; }
+
+    @media (max-width: 768px) {
+      .mobile-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: var(--sidebar-bg);
+        padding: 15px 20px;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        border-bottom: 1px solid var(--border);
+      }
+      .mobile-header h1 { color: var(--accent); font-size: 20px; }
+      .menu-btn { background: none; border: none; color: white; font-size: 24px; cursor: pointer; }
+      
+      .sidebar { transform: translateX(-100%); padding-top: 70px; }
+      .sidebar.open { transform: translateX(0); }
+      
+      .content { margin-left: 0; padding: 80px 20px 40px 20px; }
+      h2 { font-size: 26px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- MOBILE HEADER -->
+  <div class="mobile-header">
+    <h1>GRITGO Manual</h1>
+    <button class="menu-btn" onclick="document.querySelector('.sidebar').classList.toggle('open')">☰</button>
+  </div>
+
+  <!-- SIDEBAR (TABLE OF CONTENTS) -->
+  <nav class="sidebar">
+    <h1>GRITGO Guide</h1>
+    <p>The ultimate manual to master your discipline.</p>
+    <ul class="nav-list">
+      <li><a href="#intro" class="active">1. Introduction</a></li>
+      <li><a href="#daily" class="active">2. Daily Habits & Heatmap</a></li>
+      <li><a href="#timer" class="active">3. Advanced Timer</a></li>
+      <li><a href="#ai" class="active">4. Smart AI Coach</a></li>
+      <li><a href="#health" class="active">5. Health Trackers (Water/Sleep)</a></li>
+      <li><a href="#quit" class="active">6. Quit Habit Tracker</a></li>
+      <li><a href="#workout" class="active">7. Workout Tracker</a></li>
+      <li><a href="#insights" class="active">8. Extras & Insights</a></li>
+      <li><a href="#settings" class="active">9. Settings & Backup</a></li>
+      <li><a href="#faq" class="active">10. FAQ & Pro Tips</a></li>
+    </ul>
+  </nav>
+
+  <!-- MAIN CONTENT (THE BOOK) -->
+  <main class="content">
+    
+    <!-- INTRO -->
+    <section id="intro" class="chapter">
+      <h2>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+        Welcome to GRITGO
+      </h2>
+      <p>GRITGO is not just an app; it's your ultimate tool for building discipline. This guide will walk you through every feature, from the smallest details to the advanced AI systems.</p>
+      
+      <div class="callout tip">
+        <h4>💡 Pro Tip</h4>
+        <p>To get the best experience, open this site in your mobile browser and click <strong>"Add to Home Screen"</strong> to install it like a native app.</p>
+      </div>
+    </section>
+
+    <!-- DAILY HABITS -->
+    <section id="daily" class="chapter">
+      <h2>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+        Daily Habits & Heatmap
+      </h2>
+      <p>This is the core of the app. Here you will track your daily tasks and build your streak.</p>
+
+      <h3>1. Adding & Editing Habits</h3>
+      <ul>
+        <li>Click the <span class="ui-btn">+ Add Habit</span> button to create a new habit.</li>
+        <li>You can select the habit's name, category (e.g., Study, Health), and icon.</li>
+        <li>Click <span class="ui-btn" style="background:#2a3142; color:white;">Edit habits</span> to rename, reorder, or delete existing habits.</li>
+      </ul>
+
+      <h3>2. Checking Off Habits</h3>
+      <p>Tap the numbered box (e.g., 1, 2, 3) next to a habit to mark it done. You will get a satisfying sound and haptic vibration. If you accidentally check it, just tap it again to uncheck.</p>
+
+      <h3>3. The Heatmap</h3>
+      <p>The grid of small boxes represents your entire challenge.</p>
+      <ul>
+        <li>The more habits you complete in a day, the brighter the box becomes (Cyan color).</li>
+        <li>Clicking on a specific day's box lets you open a popup to view or edit that day (Past Edit).</li>
+      </ul>
+    </section>
+
+    <!-- TIMER -->
+    <section id="timer" class="chapter">
+      <h2>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+        Advanced Timer
+      </h2>
+      <p>To help you focus, there is a clock (⏱️) icon next to each habit.</p>
+      <ul>
+        <li>Clicking the clock icon opens the timer settings.</li>
+        <li>You can set preset times (5m, 30m, 1h, 3h) or enter a custom time.</li>
+        <li>When the timer ends, an alarm sounds and the habit is <strong>automatically checked off</strong>.</li>
+      </ul>
+    </section>
+
+    <!-- AI COACH -->
+    <section id="ai" class="chapter">
+      <h2>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="10" rx="2"></rect><circle cx="12" cy="5" r="2"></circle><path d="M12 7v4"></path></svg>
+        Smart AI Coach
+      </h2>
+      <p>Your personal AI coach. It analyzes your data and provides motivation whenever you need it.</p>
+
+      <h3>Key Features:</h3>
+      <ul>
+        <li><strong>🎤 Voice Input:</strong> Speak in any language. The AI will understand and reply in the same language.</li>
+        <li><strong>📷 Send Photos:</strong> Send images (like a meal or gym photo) to the AI for analysis.</li>
+        <li><strong>AI Persona:</strong> Go to Settings to change the AI's personality (Strict, Zen, Funny, Normal).</li>
+        <li><strong>Chat Controls:</strong> Swipe right on any message to reply. Long-press a message to copy, edit, or delete it.</li>
+      </ul>
+
+      <div class="callout">
+        <h4>🤖 AI Habit Generator</h4>
+        <p>If you tell the AI "Give me 5 healthy habits to lose weight", it will intelligently generate them and add them directly to your habit list!</p>
+      </div>
+    </section>
+
+    <!-- HEALTH TRACKERS -->
+    <section id="health" class="chapter">
+      <h2>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
+        Health Trackers (Water & Sleep)
+      </h2>
+      
+      <h3>💧 Daily Water Tracker (HydroFlow)</h3>
+      <p>Go to "Daily Water Tracker" to monitor your hydration.</p>
+      <ul>
+        <li>Use the <strong>+250ml Glass</strong> and <strong>+500ml Bottle</strong> buttons to log water.</li>
+        <li>When you reach your daily goal, you'll get a celebration animation and a confetti blast.</li>
+      </ul>
+
+      <h3>😴 Sleep Tracker</h3>
+      <p>Open "Weekly Progress & Sleep Tracker" to log your sleep.</p>
+      <ul>
+        <li>Select how many hours you slept.</li>
+        <li>The AI will analyze your "Brain State" (Tired, Fresh, Jammed) and give you personalized feedback.</li>
+      </ul>
+    </section>
+
+    <!-- QUIT HABIT -->
+    <section id="quit" class="chapter">
+      <h2>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line></svg>
+        Quit Habit Tracker
+      </h2>
+      <p>This section is designed to help you break bad habits (e.g., smoking, junk food).</p>
+      <ul>
+        <li>Go to <strong>Extras & Insights</strong> and open the Quit Tracker.</li>
+        <li>Add your bad habit. It will track your <em>Clean Streak</em> in days, hours, and minutes.</li>
+        <li><strong>🚨 I Need Help Button:</strong> If you have a sudden craving, tap this button. The AI will instantly step in as an emergency coach to talk you out of it.</li>
+      </ul>
+    </section>
+
+    <!-- WORKOUT -->
+    <section id="workout" class="chapter">
+      <h2>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 5v14M18 5v14M6 12h12M3 8v8M21 8v8"></path></svg>
+        Workout Tracker
+      </h2>
+      <p>Track your gym or home workouts with precision.</p>
+      <ul>
+        <li>Log the <strong>Sets, Reps, and Weight</strong> for each exercise.</li>
+        <li>Check off completed sets to automatically start a <strong>90-second Rest Timer</strong>.</li>
+        <li>Your heaviest lifted weight is automatically saved as a <strong>PR (Personal Record)</strong>.</li>
+        <li>Track your total volume and workout history over time.</li>
+      </ul>
+    </section>
+
+    <!-- INSIGHTS -->
+    <section id="insights" class="chapter">
+      <h2>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="20" x2="12" y2="10"></line><line x1="18" y1="20" x2="18" y2="4"></line><line x1="6" y1="20" x2="6" y2="16"></line></svg>
+        Extras & Insights
+      </h2>
+      <p>Your analytics dashboard. Here you can see the big picture of your progress.</p>
+      <ul>
+        <li><strong>Daily Motivation:</strong> Get a new motivational quote every day.</li>
+        <li><strong>30-Day Habit Trends:</strong> View beautiful charts to see which habits are improving and which need work.</li>
+        <li><strong>Report Card:</strong> Generate a shareable image of your stats to post on Instagram or send to friends.</li>
+        <li><strong>AI Master Time Planner:</strong> Tell the AI your goal, and it will build a time-blocked daily routine for you.</li>
+      </ul>
+    </section>
+
+    <!-- SETTINGS -->
+    <section id="settings" class="chapter">
+      <h2>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+        Settings & Backup
+      </h2>
+      <p>Customize your app and keep your data safe.</p>
+      <ul>
+        <li><strong>App Themes:</strong> Choose from over 50+ themes to completely change the look of the app.</li>
+        <li><strong>Data Backup:</strong> To save your progress, click <span class="ui-btn" style="background:var(--green); color:white;">Backup Data</span> and copy the text to a safe place.</li>
+        <li><strong>CSV Export:</strong> Export your habit data to an Excel/Google Sheets file.</li>
+      </ul>
+
+      <div class="callout warning">
+        <h4>⚠️ Important Warning</h4>
+        <p>Clearing your browser cache or data will delete your app progress. Always keep a backup text saved in your notes app once a week.</p>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="chapter">
+      <h2>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+        FAQ & Pro Tips
+      </h2>
+      
+      <h3>Q: What if I miss a day?</h3>
+      <p>A: Don't stress! Go to the Heatmap, click on the past day, and use "Past Edit" to check off any habits you completed but forgot to log.</p>
+
+      <h3>Q: Why is the AI Voice not working?</h3>
+      <p>A: Make sure you have granted microphone permissions to your browser. You also need an active internet connection for the AI to process your speech.</p>
+
+      <h3>Q: How does the Streak work?</h3>
+      <p>A: Your streak increases for every consecutive day you complete 100% of your habits. If you miss a single day, the streak resets to 0 (but your Perfect Days count stays safe).</p>
+
+      <div class="callout tip" style="margin-top: 40px; border-left-color: var(--gold); background: rgba(241, 196, 15, 0.05);">
+        <h4 style="color: var(--gold);">🏆 Final Words</h4>
+        <p>"Success is the sum of small efforts, repeated day in and day out." Keep showing up, and GRITGO will be right here with you.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    // Smooth Scrolling & Active State for Sidebar Links
+    document.querySelectorAll('.nav-list a').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetSection = document.querySelector(targetId);
+        
+        if (targetSection) {
+          window.scrollTo({
+            top: targetSection.offsetTop - 20,
+            behavior: 'smooth'
+          });
+          
+          // Close mobile menu on click
+          if(window.innerWidth <= 768) {
+            document.querySelector('.sidebar').classList.remove('open');
+          }
+        }
+      });
+    });
+
+    // Intersection Observer for highlighting current chapter in sidebar
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          document.querySelectorAll('.nav-list a').forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${entry.target.id}`) {
+              link.classList.add('active');
+            }
+          });
+        }
+      });
+    }, { rootMargin: '-20% 0px -80% 0px' });
+
+    document.querySelectorAll('.chapter').forEach(chapter => {
+      observer.observe(chapter);
+    });
+  </script>
+</body>
+</html>
