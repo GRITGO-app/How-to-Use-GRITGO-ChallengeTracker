@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GRITGO - User Guide & Manual</title>
+  <title>GRITGO - Complete User Guide & Manual</title>
   <style>
-    /* ================= CSS VARIABLES & RESET ================= */
     :root {
       --bg: #0a0e14;
       --sidebar-bg: #0f1419;
@@ -21,9 +20,7 @@
       --border: #2a3142;
       --font-main: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     }
-
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    
     body {
       background-color: var(--bg);
       color: var(--text-main);
@@ -32,10 +29,8 @@
       display: flex;
       min-height: 100vh;
     }
-
-    /* ================= SIDEBAR (TABLE OF CONTENTS) ================= */
     .sidebar {
-      width: 300px;
+      width: 320px;
       background-color: var(--sidebar-bg);
       border-right: 1px solid var(--border);
       height: 100vh;
@@ -47,7 +42,8 @@
       transition: transform 0.3s ease;
       z-index: 100;
     }
-
+    .sidebar::-webkit-scrollbar { width: 6px; }
+    .sidebar::-webkit-scrollbar-thumb { background: #2a3142; border-radius: 3px; }
     .sidebar h1 {
       color: var(--accent);
       font-size: 24px;
@@ -55,49 +51,50 @@
       margin-bottom: 10px;
       letter-spacing: 1px;
     }
-
     .sidebar p {
       color: var(--text-muted);
       font-size: 13px;
-      margin-bottom: 30px;
+      margin-bottom: 25px;
       border-bottom: 1px solid var(--border);
       padding-bottom: 20px;
     }
-
     .nav-list { list-style: none; }
-    .nav-list li { margin-bottom: 8px; }
+    .nav-list li { margin-bottom: 6px; }
     .nav-list a {
       color: var(--text-muted);
       text-decoration: none;
-      font-size: 14px;
+      font-size: 13.5px;
       display: block;
-      padding: 10px 15px;
+      padding: 9px 15px;
       border-radius: 8px;
       transition: all 0.2s;
       border-left: 3px solid transparent;
     }
-
     .nav-list a:hover, .nav-list a.active {
       background-color: var(--accent-bg);
       color: var(--accent);
       border-left-color: var(--accent);
     }
-
-    /* ================= MAIN CONTENT (THE BOOK) ================= */
+    .nav-list .section-title {
+      color: #555;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-weight: bold;
+      padding: 15px 15px 5px 15px;
+      list-style: none;
+    }
     .content {
-      margin-left: 300px;
+      margin-left: 320px;
       flex: 1;
       padding: 50px 60px;
-      max-width: 900px;
+      max-width: 1000px;
     }
-
     .chapter {
-      margin-bottom: 60px;
+      margin-bottom: 70px;
       animation: fadeIn 0.5s ease;
     }
-
     @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
     h2 {
       color: var(--text-main);
       font-size: 32px;
@@ -108,68 +105,80 @@
       align-items: center;
       gap: 12px;
     }
-
-    h2 svg { width: 28px; height: 28px; stroke: var(--accent); }
-
+    h2 svg { width: 28px; height: 28px; stroke: var(--accent); flex-shrink: 0; }
     h3 {
       color: var(--accent);
-      font-size: 20px;
-      margin: 30px 0 15px 0;
+      font-size: 19px;
+      margin: 28px 0 12px 0;
     }
-
-    p { margin-bottom: 15px; color: #c3c9d1; font-size: 16px; }
-
-    ul, ol { margin-left: 20px; margin-bottom: 20px; color: #c3c9d1; }
-    li { margin-bottom: 10px; }
+    h4 { color: var(--purple); font-size: 16px; margin: 20px 0 10px 0; }
+    p { margin-bottom: 15px; color: #c3c9d1; font-size: 15px; }
+    ul, ol { margin-left: 22px; margin-bottom: 20px; color: #c3c9d1; }
+    li { margin-bottom: 8px; font-size: 15px; }
     strong { color: var(--text-main); }
-
-    /* ================= CALLOUT BOXES ================= */
+    em { color: var(--purple); font-style: normal; font-weight: 600; }
     .callout {
       background: var(--content-bg);
       border: 1px solid var(--border);
       border-left: 4px solid var(--accent);
-      padding: 20px;
+      padding: 18px 20px;
       border-radius: 0 12px 12px 0;
-      margin: 25px 0;
+      margin: 22px 0;
     }
-
     .callout.tip { border-left-color: var(--green); }
     .callout.tip h4 { color: var(--green); }
-    
     .callout.warning { border-left-color: var(--red); }
     .callout.warning h4 { color: var(--red); }
-
-    .callout h4 { margin-bottom: 8px; font-size: 16px; display: flex; align-items: center; gap: 8px; }
+    .callout.gold { border-left-color: var(--gold); background: rgba(241, 196, 15, 0.05); }
+    .callout.gold h4 { color: var(--gold); }
+    .callout.purple { border-left-color: var(--purple); }
+    .callout.purple h4 { color: var(--purple); }
+    .callout h4 { margin-bottom: 8px; font-size: 15px; display: flex; align-items: center; gap: 8px; }
     .callout p { margin-bottom: 0; font-size: 14px; }
-
-    /* ================= UI MOCKUP ELEMENTS ================= */
-    .ui-element {
-      display: inline-block;
-      background: #1a1f2e;
-      padding: 4px 10px;
-      border-radius: 6px;
-      border: 1px solid var(--border);
-      font-size: 13px;
-      color: var(--text-main);
-      font-weight: bold;
-      margin: 0 4px;
-    }
-    
     .ui-btn {
       display: inline-block;
       background: var(--accent);
       color: #000;
-      padding: 6px 15px;
-      border-radius: 8px;
+      padding: 4px 12px;
+      border-radius: 6px;
       font-size: 13px;
       font-weight: bold;
-      margin: 0 4px;
+      margin: 0 3px;
     }
-
-    /* ================= MOBILE RESPONSIVE ================= */
+    .ui-btn.dark { background: #2a3142; color: white; }
+    .ui-btn.green { background: var(--green); color: white; }
+    .ui-btn.red { background: var(--red); color: white; }
+    .ui-btn.purple { background: var(--purple); color: white; }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      margin: 20px 0;
+    }
+    .feature-card {
+      background: var(--content-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 15px;
+    }
+    .feature-card h4 { margin-top: 0; margin-bottom: 6px; color: var(--accent); font-size: 14px; }
+    .feature-card p { font-size: 13px; margin-bottom: 0; }
+    .badge {
+      display: inline-block;
+      font-size: 10px;
+      padding: 2px 8px;
+      border-radius: 10px;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-left: 6px;
+    }
+    .badge.new { background: rgba(74, 170, 74, 0.2); color: var(--green); }
+    .badge.ai { background: rgba(155, 89, 182, 0.2); color: var(--purple); }
+    .badge.hot { background: rgba(255, 107, 74, 0.2); color: var(--red); }
     .mobile-header { display: none; }
-
-    @media (max-width: 768px) {
+    @media (max-width: 900px) {
+      .feature-grid { grid-template-columns: 1fr; }
       .mobile-header {
         display: flex;
         justify-content: space-between;
@@ -184,268 +193,970 @@
       }
       .mobile-header h1 { color: var(--accent); font-size: 20px; }
       .menu-btn { background: none; border: none; color: white; font-size: 24px; cursor: pointer; }
-      
       .sidebar { transform: translateX(-100%); padding-top: 70px; }
       .sidebar.open { transform: translateX(0); }
-      
       .content { margin-left: 0; padding: 80px 20px 40px 20px; }
-      h2 { font-size: 26px; }
+      h2 { font-size: 24px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- MOBILE HEADER -->
-  <div class="mobile-header">
-    <h1>GRITGO Manual</h1>
-    <button class="menu-btn" onclick="document.querySelector('.sidebar').classList.toggle('open')">☰</button>
-  </div>
+<div class="mobile-header">
+  <h1>GRITGO Manual</h1>
+  <button class="menu-btn" onclick="document.querySelector('.sidebar').classList.toggle('open')">☰</button>
+</div>
 
-  <!-- SIDEBAR (TABLE OF CONTENTS) -->
-  <nav class="sidebar">
-    <h1>GRITGO Guide</h1>
-    <p>The ultimate manual to master your discipline.</p>
-    <ul class="nav-list">
-      <li><a href="#intro" class="active">1. Introduction</a></li>
-      <li><a href="#daily" class="active">2. Daily Habits & Heatmap</a></li>
-      <li><a href="#timer" class="active">3. Advanced Timer</a></li>
-      <li><a href="#ai" class="active">4. Smart AI Coach</a></li>
-      <li><a href="#health" class="active">5. Health Trackers (Water/Sleep)</a></li>
-      <li><a href="#quit" class="active">6. Quit Habit Tracker</a></li>
-      <li><a href="#workout" class="active">7. Workout Tracker</a></li>
-      <li><a href="#insights" class="active">8. Extras & Insights</a></li>
-      <li><a href="#settings" class="active">9. Settings & Backup</a></li>
-      <li><a href="#faq" class="active">10. FAQ & Pro Tips</a></li>
-    </ul>
-  </nav>
+<nav class="sidebar">
+  <h1>GRITGO Guide</h1>
+  <p>The complete manual to master every feature.</p>
+  <ul class="nav-list">
+    <li class="section-title">Getting Started</li>
+    <li><a href="#intro">1. Introduction</a></li>
+    <li><a href="#setup">2. Challenge Setup</a></li>
+    <li><a href="#sidebar">3. Sidebar Menu</a></li>
 
-  <!-- MAIN CONTENT (THE BOOK) -->
-  <main class="content">
+    <li class="section-title">Core Tracking</li>
+    <li><a href="#daily">4. Daily Habits</a></li>
+    <li><a href="#heatmap">5. Heatmap & Progress</a></li>
+    <li><a href="#timer">6. Advanced Timer</a></li>
+
+    <li class="section-title">AI Features</li>
+    <li><a href="#ai-coach">7. AI Coach (Chat)</a></li>
+    <li><a href="#ai-advanced">8. AI Advanced Features</a></li>
+
+    <li class="section-title">Health Trackers</li>
+    <li><a href="#water">9. Water Tracker</a></li>
+    <li><a href="#sleep">10. Sleep Tracker</a></li>
+    <li><a href="#food">11. AI Food Scanner</a></li>
+    <li><a href="#workout">12. Workout Tracker</a></li>
+
+    <li class="section-title">Extra Trackers</li>
+    <li><a href="#quit">13. Quit Habit Tracker</a></li>
+    <li><a href="#tasks">14. Daily Tasks</a></li>
+    <li><a href="#library">15. Digital Library</a></li>
+    <li><a href="#bookrules">16. Book Rules Tracker</a></li>
+
+    <li class="section-title">Insights & Data</li>
+    <li><a href="#insights">17. Extras & Insights</a></li>
+    <li><a href="#journal">18. Journal & Mood</a></li>
+    <li><a href="#gallery">19. Goals & Photos</a></li>
+
+    <li class="section-title">Customization</li>
+    <li><a href="#themes">20. Themes & Colors</a></li>
+    <li><a href="#language">21. Language System</a></li>
+
+    <li class="section-title">Data & Help</li>
+    <li><a href="#settings">22. Settings & Backup</a></li>
+    <li><a href="#faq">23. FAQ & Pro Tips</a></li>
+  </ul>
+</nav>
+
+<main class="content">
+
+  <!-- 1. INTRODUCTION -->
+  <section id="intro" class="chapter">
+    <h2>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+      1. Welcome to GRITGO
+    </h2>
+    <p>GRITGO is <strong>not just a habit tracker</strong> — it's your complete personal growth operating system. It combines habits, health, sleep, workouts, journaling, AI coaching, digital library, and photo progress into one powerful app.</p>
+    <p>This guide covers <strong>every single feature</strong> you'll find inside the app.</p>
     
-    <!-- INTRO -->
-    <section id="intro" class="chapter">
-      <h2>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
-        Welcome to GRITGO
-      </h2>
-      <p>GRITGO is not just an app; it's your ultimate tool for building discipline. This guide will walk you through every feature, from the smallest details to the advanced AI systems.</p>
-      
-      <div class="callout tip">
-        <h4>💡 Pro Tip</h4>
-        <p>To get the best experience, open this site in your mobile browser and click <strong>"Add to Home Screen"</strong> to install it like a native app.</p>
-      </div>
-    </section>
+    <div class="callout tip">
+      <h4>💡 Pro Tip — Install as App</h4>
+      <p>Open this in your mobile browser and click <strong>"Add to Home Screen"</strong>. It will work exactly like a native app (no browser bar, works offline).</p>
+    </div>
 
-    <!-- DAILY HABITS -->
-    <section id="daily" class="chapter">
-      <h2>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
-        Daily Habits & Heatmap
-      </h2>
-      <p>This is the core of the app. Here you will track your daily tasks and build your streak.</p>
+    <div class="callout gold">
+      <h4>⭐ What Makes GRITGO Different</h4>
+      <p>Most habit apps only track checkboxes. GRITGO tracks <em>50+ data points</em> across every area of your life and uses AI to analyze them all together — so you get real coaching, not generic motivation.</p>
+    </div>
+  </section>
 
-      <h3>1. Adding & Editing Habits</h3>
-      <ul>
-        <li>Click the <span class="ui-btn">+ Add Habit</span> button to create a new habit.</li>
-        <li>You can select the habit's name, category (e.g., Study, Health), and icon.</li>
-        <li>Click <span class="ui-btn" style="background:#2a3142; color:white;">Edit habits</span> to rename, reorder, or delete existing habits.</li>
+  <!-- 2. CHALLENGE SETUP -->
+  <section id="setup" class="chapter">
+    <h2>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+      2. Challenge Setup (First Time)
+    </h2>
+    <p>When you first open GRITGO, you'll see a welcome screen. You need to set up your first challenge:</p>
+    <ul>
+      <li><strong>Challenge Name:</strong> e.g., "90-Day Discipline", "Morning Routine", "Weight Loss Journey"</li>
+      <li><strong>Duration:</strong> Number of days (e.g., 30, 60, 90)</li>
+      <li><strong>Start Date:</strong> Can't be in the past — must be today or future</li>
+      <li><strong>Motivation Text:</strong> A sentence that will appear on your dashboard</li>
+      <li><strong>Day Start / Day End Time:</strong> When your "day" starts and ends (e.g., 05:00 → 21:00). This affects when the new day begins for tracking.</li>
+    </ul>
+    <p>Click <span class="ui-btn">Start Challenge</span> to begin.</p>
+    <div class="callout warning">
+      <h4>⚠️ Start Date Lock</h4>
+      <p>You can change the start date later in Settings, but you <em>cannot</em> set a fresh start date that's in the past.</p>
+    </div>
+  </section>
+
+  <!-- 3. SIDEBAR -->
+  <section id="sidebar" class="chapter">
+    <h2>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      3. Sidebar Menu Overview
+    </h2>
+    <p>Tap the <strong>☰ hamburger icon</strong> (top-left) or <strong>swipe right from the left edge</strong> to open the sidebar. It contains everything:</p>
+
+    <div class="feature-grid">
+      <div class="feature-card"><h4>⚙️ Settings</h4><p>Change challenge details, themes, sound, persona, backup.</p></div>
+      <div class="feature-card"><h4>📖 How to Use app</h4><p>Opens this manual in a new tab.</p></div>
+      <div class="feature-card"><h4>💬 Send Feedback</h4><p>Send a message via WhatsApp to the developer.</p></div>
+      <div class="feature-card"><h4>📅 Daily Note & Sleep History</h4><p>See past journal notes and sleep logs.</p></div>
+      <div class="feature-card"><h4>✅ Daily Tasks</h4><p>Daily AI + personal task list.</p></div>
+      <div class="feature-card"><h4>📚 Digital Library</h4><p>20 famous books, chapter-wise rules + AI chat.</p></div>
+      <div class="feature-card"><h4>📖 Book Rules Tracker</h4><p>Daily habit tracking based on book rules.</p></div>
+      <div class="feature-card"><h4>🍔 AI Food Scanner</h4><p>Photo → Calories/Protein/Carbs/Fat.</p></div>
+      <div class="feature-card"><h4>📸 Goals & Gallery</h4><p>SMART Goals + Photo Gallery.</p></div>
+      <div class="feature-card"><h4>💾 Quick Backup</h4><p>One-tap data backup copy.</p></div>
+      <div class="feature-card"><h4>🗑️ Delete All Habits</h4><p>Wipe all habits (with confirmation).</p></div>
+    </div>
+  </section>
+
+  <!-- 4. DAILY HABITS -->
+  <section id="daily" class="chapter">
+    <h2>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+      4. Daily Habits (The Core)
+    </h2>
+
+    <h3>➕ Adding a Habit</h3>
+    <ul>
+      <li>Tap <span class="ui-btn">+ Add Habit</span></li>
+      <li>Type the habit name (e.g., "Drink 2L Water")</li>
+      <li>Choose a <strong>Category</strong> (General, Study, Health, Fitness, Work, Mindfulness, Social, Finance, Hobby, Sleep, Morning Routine)</li>
+      <li>Pick an <strong>Icon</strong> from 9 options (book, fitness, water, run, mind, sleep, heart, star, default)</li>
+      <li>Tap <span class="ui-btn">+Add Habit</span></li>
+    </ul>
+
+    <h3>✏️ Editing / Reordering / Deleting</h3>
+    <ul>
+      <li>Tap <span class="ui-btn dark">Edit habits</span> to enter edit mode</li>
+      <li><strong>↑ ↓</strong> arrows move a habit up or down</li>
+      <li>Tap the <strong>✏️ pencil icon</strong> to rename / change category</li>
+      <li>Tap the <strong>🗑️ trash icon</strong> to delete — you'll get a 5-second <strong>UNDO</strong> option</li>
+      <li>Tap <span class="ui-btn dark">Back</span> to discard changes or <span class="ui-btn dark">Done editing</span> to save</li>
+    </ul>
+
+    <h3>✅ Checking Habits</h3>
+    <ul>
+      <li>Tap the <strong>numbered box</strong> (1, 2, 3...) next to a habit → it turns into a checkmark ✓</li>
+      <li>You get a <strong>satisfying sound</strong> + <strong>haptic vibration</strong></li>
+      <li>Tap again to uncheck</li>
+      <li>When you complete <strong>ALL habits</strong> → confetti + celebration sound + AI congratulation message</li>
+    </ul>
+
+    <h3>🔍 Search Bar</h3>
+    <p>Type a <strong>habit name</strong> or <strong>number</strong> (e.g., "3") to filter instantly.</p>
+
+    <h3>👁️ Hide Completed</h3>
+    <p>Tap the <strong>eye icon</strong> next to the search bar to hide completed habits. A slash-through eye means completed habits are hidden. Persists across sessions.</p>
+
+    <h3>🔗 Chain Lock (Auto)</h3>
+    <p>Habits are <strong>chained</strong> — a habit gets dimmed (opacity 0.4) until the previous habit is done. This builds momentum. When the previous one is done, the next one glows with a cyan border — inviting you to do it.</p>
+
+    <h3>⚡ Quick Action Buttons</h3>
+    <ul>
+      <li><strong>✅ Check All</strong> (blue button) — marks every habit as done</li>
+      <li><strong>🔄 Reset All</strong> (black button) — unchecks every habit</li>
+    </ul>
+
+    <div class="callout tip">
+      <h4>💡 Pro Tip — Timer Icon</h4>
+      <p>Each habit has a small <strong>⏱ clock icon</strong> next to it — use it to start a focus timer. Read section 6.</p>
+    </div>
+  </section>
+
+  <!-- 5. HEATMAP -->
+  <section id="heatmap" class="chapter">
+    <h2>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+      5. Heatmap & Progress
+    </h2>
+
+    <h3>📅 Dashboard Heatmap</h3>
+    <p>Below the stats, you'll see a grid of small boxes — one for each day of your challenge.</p>
+    <ul>
+      <li><strong>Dark box</strong> = 0% completed</li>
+      <li><strong>Dim cyan</strong> = 33-65% completed</li>
+      <li><strong>Bright cyan</strong> = 66-99% completed</li>
+      <li><strong>Full glow (cyan with shadow)</strong> = 100% perfect day</li>
+      <li><strong>White border</strong> = Today</li>
+    </ul>
+
+    <h3>🖱️ Tap to Edit Past Days (Past Edit)</h3>
+    <ul>
+      <li>Tap any past day in the heatmap → a popup confirms you want to edit</li>
+      <li>Tap <strong>Tick</strong> to open that day's habit list</li>
+      <li>You can check/uncheck habits for that past date</li>
+      <li>Has its own <strong>search bar</strong> too</li>
+    </ul>
+
+    <div class="callout warning">
+      <h4>⚠️ Can't Edit Future Days</h4>
+      <p>You can only edit today or past days. Future days are locked.</p>
+    </div>
+
+    <h3>📊 The 3 Stat Cards (Top of Home)</h3>
+    <ul>
+      <li><strong>🔥 Day Streak</strong> — consecutive days of 100% completion</li>
+      <li><strong>🏆 Perfect Days</strong> — total days where you completed 100%</li>
+      <li><strong>📈 Overall %</strong> — today's completion percentage</li>
+    </ul>
+
+    <h3>📆 Yearly Heatmap (GitHub Style)</h3>
+    <p>Go to <strong>Extras & Insights</strong> → scroll down → <strong>Yearly Heatmap & Photos</strong> → <strong>Open Yearly View</strong>. You'll see a full-year, month-by-month grid view of every day.</p>
+  </section>
+
+  <!-- 6. TIMER -->
+  <section id="timer" class="chapter">
+    <h2>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+      6. Advanced Timer
+    </h2>
+    <p>Every habit has a small <strong>⏱ clock icon</strong>. Tap it to open the timer modal.</p>
+    <ul>
+      <li><strong>Presets:</strong> 5 min, 30 min, 1 hour, 3 hours, 5 hours</li>
+      <li><strong>Custom:</strong> Type any time (e.g., "45" for 45 minutes, or "1.5h" for 90 minutes)</li>
+      <li>A <strong>floating timer widget</strong> appears on your screen showing the countdown</li>
+      <li>When the timer ends → <strong>alarm sound plays + the habit is automatically checked off</strong> + confetti!</li>
+      <li>Tap <strong>Stop Timer</strong> on the widget to cancel anytime</li>
+    </ul>
+    <div class="callout tip">
+      <h4>💡 Pro Tip</h4>
+      <p>Use the timer for tasks like "Read for 30 minutes" or "Meditate for 10 minutes". You don't need to manually check it afterward — the timer does it for you.</p>
+    </div>
+  </section>
+
+  <!-- 7. AI COACH -->
+  <section id="ai-coach" class="chapter">
+    <h2>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="10" rx="2"></rect><circle cx="12" cy="5" r="2"></circle><path d="M12 7v4"></path></svg>
+      7. AI Coach — Chat System
+    </h2>
+    <p>Tap the <strong>"AI" Habit Coach</strong> button on the home screen to open the chat.</p>
+
+    <h3>💬 Basic Chat</h3>
+    <ul>
+      <li>Type any message → tap the <strong>send (paper plane)</strong> icon</li>
+      <li>The AI <strong>knows your full data</strong> — habits, water, sleep, workout, quit habits, tasks, moods, journal, everything. Ask "How am I doing?" and it analyzes it all.</li>
+      <li>It's a <strong>general-purpose AI</strong> — you can ask coding questions, general knowledge, life advice, anything.</li>
+    </ul>
+
+    <h3>🎤 Voice Input (2 ways)</h3>
+    <ul>
+      <li><strong>Short tap</strong> on the mic icon → opens a full-screen voice popup with a pulsing visualizer</li>
+      <li><strong>Long press</strong> on the mic icon → records into the text box live (releases to stop)</li>
+    </ul>
+
+    <h3>📷 Send Images</h3>
+    <p>Tap the <strong>image icon</strong> at the top → select an image → preview appears → type a message → send. The AI analyzes the image (food, gym photos, notes, etc.).</p>
+
+    <h3>🔊 Voice Reply (TTS)</h3>
+    <p>Tap the <strong>speaker icon</strong> at the top-right of the chat. When ON (cyan), the AI reads its answers aloud in your selected language.</p>
+
+    <h3>👤 Profile</h3>
+    <p>Tap the <strong>person icon</strong> → fill in your <strong>Name, Age, Bio/Goals</strong>. The AI uses this to personalize every response.</p>
+
+    <h3>🎨 Chat Appearance</h3>
+    <p>Tap the <strong>palette icon</strong> → change chat background, upload a custom image, choose your bubble color (50+ options), and AI bubble color.</p>
+
+    <h3>🗑️ Clear Chat</h3>
+    <p>Tap the <strong>trash icon</strong> → confirm → wipes the entire conversation.</p>
+
+    <h3>⚡ Quick Actions Menu (3-dot button)</h3>
+    <p>Next to the input box, tap the <strong>⋮ (3-dot) button</strong>:</p>
+    <ul>
+      <li><strong>➕ Add Habit</strong> — pre-fills "+Add Habit:" in the input</li>
+      <li><strong>🔥 Craving Help</strong> — pre-fills "I'm having a craving, help me!" in your language</li>
+      <li><strong>❓ How to Use App</strong> — opens this guide website</li>
+      <li><strong>🥱🌅 Good Morning</strong> — pre-fills "Good Morning Coach"</li>
+      <li><strong>😴🌃 Good Night</strong> — pre-fills "Good Night Coach"</li>
+    </ul>
+
+    <h3>✋ Advanced Chat Gestures</h3>
+    <ul>
+      <li><strong>Swipe right</strong> on a message → reply to it (quoted reply)</li>
+      <li><strong>Long press</strong> a message → enters <strong>selection mode</strong> (multi-select)</li>
+      <li><strong>Right-click / long-press</strong> a bubble → Options menu (Copy / Read Loud / Edit / Delete)</li>
+    </ul>
+
+    <div class="feature-grid">
+      <div class="feature-card"><h4>📋 Copy</h4><p>Copy message text to clipboard.</p></div>
+      <div class="feature-card"><h4>🔊 Read Loud</h4><p>AI message text-to-speech.</p></div>
+      <div class="feature-card"><h4>✏️ Edit</h4><p>Edit your own message and re-send.</p></div>
+      <div class="feature-card"><h4>🗑️ Delete</h4><p>Remove the message.</p></div>
+    </div>
+  </section>
+
+  <!-- 8. AI ADVANCED -->
+  <section id="ai-advanced" class="chapter">
+    <h2>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+      8. AI Advanced Features
+    </h2>
+
+    <h3>🤖 AI Habit Generator</h3>
+    <p>Inside the AI modal → <strong>AI Habit Generator</strong> section:</p>
+    <ul>
+      <li>Type a goal (e.g., "I want to lose 10 kg")</li>
+      <li>You can also specify number: <strong>"Give me 7 habits for studying"</strong></li>
+      <li>Tap <strong>Generate</strong></li>
+      <li>The AI creates habits → tap any generated habit to add it directly</li>
+    </ul>
+
+    <h3>📊 AI Performance Review</h3>
+    <p>Inside the AI modal → <strong>AI Performance Review</strong> section:</p>
+    <ul>
+      <li><strong>Weekly Review</strong> — available after Day 7</li>
+      <li><strong>Monthly Review</strong> — available after Day 30</li>
+      <li>Deep analysis with <em>real numbers</em>: habits, water, sleep, workout, quit, tasks, food, moods, journal</li>
+      <li>Covers: Overall Score, Habits, Water, Sleep, Workout, Quit, Tasks, Food, Photos, Moods, Journal, Insights, What's Working, What's Failing, 3-Step Action Plan</li>
+    </ul>
+
+    <h3>⏰ AI Master Time Planner</h3>
+    <p>In <strong>Extras & Insights</strong> → scroll to <strong>AI Master Time Planner</strong>:</p>
+    <ul>
+      <li>Type your goal (e.g., "Prepare for exam in 2 hours")</li>
+      <li>Tap <strong>Plan</strong></li>
+      <li>AI considers <em>your current local time</em> and builds a time-blocked routine</li>
+      <li>At the bottom, tap <strong>+ Add These as My Habits</strong> to save the core habits</li>
+      <li>Tap the <strong>History</strong> button (top-right) to see all past plans</li>
+    </ul>
+
+    <h3>🎭 AI Persona</h3>
+    <p>In <strong>Settings</strong> → <strong>AI Coach Persona</strong>:</p>
+    <ul>
+      <li><strong>Normal</strong> — Friendly & Supportive</li>
+      <li><strong>Strict Coach</strong> — No excuses, tough love</li>
+      <li><strong>Zen Master</strong> — Calm, mindful, peaceful</li>
+      <li><strong>Funny Friend</strong> — Jokes and sarcasm</li>
+    </ul>
+
+    <h3>✨ Morning Affirmation</h3>
+    <p>On the home screen (before 3 PM), you'll see an <strong>AI-generated affirmation card</strong> personalized to your data. Tap <strong>🔄 refresh</strong> to get a new one.</p>
+
+    <h3>🔧 AI Habit Adjuster</h3>
+    <p>If you miss a habit for <strong>3+ days in a row</strong>, a yellow banner appears above "Today" asking if you want to fix it. Options:</p>
+    <ul>
+      <li><strong>🤖 Get AI Tip</strong> — AI gives a specific solution</li>
+      <li><strong>🗑️ Remove</strong> — delete the habit</li>
+      <li><strong>✕</strong> — dismiss for today</li>
+    </ul>
+
+    <h3>🎙️ Voice Journal</h3>
+    <p>In <strong>Extras & Insights</strong> → <strong>Today's Journal</strong>. Tap the small <strong>mic icon</strong> inside the journal textarea to speak your entry. The text is added as you speak.</p>
+
+    <h3>🔔 Proactive AI Check-ins</h3>
+    <p>Every day when you open the app, the AI will automatically send a message based on yesterday's performance. It may encourage, warn, or congratulate you.</p>
+
+    <h3>🎉 AI Congrats on 100%</h3>
+    <p>When you complete all habits for the day, the AI sends a personalized congratulation message.</p>
+  </section>
+
+  <!-- 9. WATER -->
+  <section id="water" class="chapter">
+    <h2>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
+      9. Water Tracker (HydroFlow)
+    </h2>
+    <p>Tap <strong>Daily Water Tracker</strong> on the home screen.</p>
+
+    <h3>💧 Logging Water</h3>
+    <ul>
+      <li><strong>+250ml Glass</strong> button — logs a glass</li>
+      <li><strong>+500ml Bottle</strong> button — logs a bottle</li>
+      <li>Water fills a circular animated wave visualizer</li>
+      <li>When you hit 100% → confetti + celebration + sound</li>
+    </ul>
+
+    <h3>📊 Stats Shown</h3>
+    <ul>
+      <li><strong>Day Streak</strong> — days you hit the goal consecutively</li>
+      <li><strong>Daily Goal</strong> — your set goal (default 2.5L)</li>
+      <li><strong>Progress %</strong> — how much of goal you hit today</li>
+    </ul>
+
+    <h3>⚙️ Settings (gear icon)</h3>
+    <ul>
+      <li>Change <strong>Daily Water Goal</strong> (1-10 liters)</li>
+      <li><strong>Reset All Data</strong> — wipe all water history</li>
+    </ul>
+
+    <h3>🔄 Reset Today (refresh icon)</h3>
+    <p>Tap the <strong>refresh</strong> icon in the header to reset today's intake to 0 (streak preserved).</p>
+
+    <h3>📈 History & Stats</h3>
+    <p>Tap <strong>View History & Stats</strong> → see weekly total and monthly total.</p>
+  </section>
+
+  <!-- 10. SLEEP -->
+  <section id="sleep" class="chapter">
+    <h2>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+      10. Sleep Tracker
+    </h2>
+    <p>Tap <strong>Weekly Progress & Sleep Tracker</strong> on the home screen.</p>
+
+    <h3>😴 Logging Sleep</h3>
+    <ul>
+      <li>Select hours slept (1-12 hours)</li>
+      <li>Tap <strong>Save Today's Sleep</strong></li>
+      <li>You'll see the <strong>Brain State</strong> update instantly</li>
+    </ul>
+
+    <h3>🧠 Brain States</h3>
+    <div class="feature-grid">
+      <div class="feature-card"><h4>😴 Tired Brain (≤6h)</h4><p>Red glow — sleep deprivation warning</p></div>
+      <div class="feature-card"><h4>🙂 Better Brain (7h)</h4><p>Yellow glow — acceptable</p></div>
+      <div class="feature-card"><h4>⚡ Fresh Brain (8h)</h4><p>Cyan glow — perfect</p></div>
+      <div class="feature-card"><h4>🌟 Super Fresh (9h)</h4><p>Bright cyan — excellent</p></div>
+      <div class="feature-card"><h4>😵 Jammed (10-11h)</h4><p>Purple — oversleeping</p></div>
+      <div class="feature-card"><h4>😑 Over Sleep (12h)</h4><p>Grey — too much</p></div>
+    </div>
+
+    <h3>🤖 AI Sleep Coach Reply</h3>
+    <p>After saving, an AI message appears below analyzing your sleep with personalized advice. Example: 8h = praise, 3h = warning + go to bed early.</p>
+
+    <h3>✏️ Edit Sleep (12-hour window)</h3>
+    <p>For <strong>12 hours</strong> after saving, an <strong>Edit Sleep Data</strong> button appears. Tap it to clear and re-enter.</p>
+
+    <h3>📅 Weekly Report</h3>
+    <p>After 7 days, an automatic report appears showing your week average and brain state verdict.</p>
+
+    <div class="callout warning">
+      <h4>🔒 Locked Before Challenge Starts</h4>
+      <p>You can't log sleep until your challenge's start date arrives.</p>
+    </div>
+  </section>
+
+  <!-- 11. FOOD -->
+  <section id="food" class="chapter">
+    <h2>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l19-9-9 19-2-8-8-2z"></path></svg>
+      11. AI Food Scanner
+    </h2>
+    <p>In <strong>Sidebar</strong> → <strong>AI Food Scanner</strong>.</p>
+
+    <h3>🍔 How to Scan</h3>
+    <ul>
+      <li>Tap <strong>Select Food Photo</strong></li>
+      <li>Take or upload a clear food photo</li>
+      <li>Preview appears → tap <strong>Analyze Nutrition</strong></li>
+      <li>AI detects: <strong>Food name, Calories, Protein, Carbs, Fats</strong> + summary</li>
+    </ul>
+
+    <h3>🚫 "Not a Food" Detection</h3>
+    <p>If the image is not food (e.g., a car or scenery), the AI refuses politely and asks for food photos.</p>
+
+    <h3>🕒 Recent Scans</h3>
+    <p>Tap <strong>Recent Scans</strong> at the bottom to see the last 20 scans with dates and calories.</p>
+
+    <div class="callout warning">
+      <h4>⚠️ Disclaimer</h4>
+      <p>AI nutrition estimates are approximate. Portion size and cooking method affect real values.</p>
+    </div>
+  </section>
+
+  <!-- 12. WORKOUT -->
+  <section id="workout" class="chapter">
+    <h2>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 5v14M18 5v14M6 12h12M3 8v8M21 8v8"></path></svg>
+      12. Workout Tracker
+    </h2>
+    <p>In <strong>Extras & Insights</strong> → <strong>Workout Tracker</strong> → <strong>Open Workout Tracker</strong>.</p>
+
+    <h3>📋 4 Tabs</h3>
+    <ul>
+      <li><strong>Today</strong> — current workout with sets/reps/weight inputs</li>
+      <li><strong>Library</strong> — 8 muscle groups with predefined exercises</li>
+      <li><strong>History</strong> — all past workouts with volume</li>
+      <li><strong>Stats</strong> — weekly volume, PRs, total volume</li>
+    </ul>
+
+    <h3>🏋️ Adding Exercises</h3>
+    <ul>
+      <li>In Library tab → tap any exercise to add it to today</li>
+      <li>Or tap the floating <strong>+ button</strong> (bottom-right) to add a custom exercise</li>
+      <li>Choose muscle group: Chest, Back, Legs, Arms, Shoulders, Core, Cardio, Full Body</li>
+    </ul>
+
+    <h3>⚙️ Logging Sets</h3>
+    <ul>
+      <li>Enter <strong>Weight (kg)</strong> and <strong>Reps</strong> for each set</li>
+      <li>Tap <strong>○</strong> to mark a set as done → becomes ✓</li>
+      <li>Rest Timer automatically starts (90 sec) — skip or let it run</li>
+      <li>Tap <strong>+ Add Set</strong> to add another set</li>
+    </ul>
+
+    <h3>🏆 Personal Records</h3>
+    <p>Your heaviest weight for each exercise is auto-tracked as a <strong>PR</strong> and shown with 🏆.</p>
+
+    <h3>📊 Stats</h3>
+    <ul>
+      <li>Days this week</li>
+      <li>Total workouts</li>
+      <li>Week volume (kg)</li>
+      <li>All-time volume</li>
+      <li>Today's summary (sets done / volume)</li>
+      <li>Top 10 PR list</li>
+    </ul>
+  </section>
+
+  <!-- 13. QUIT -->
+  <section id="quit" class="chapter">
+    <h2>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line></svg>
+      13. Quit Habit Tracker
+    </h2>
+    <p>In <strong>Extras & Insights</strong> → scroll down → <strong>Open Quit Tracker</strong>.</p>
+
+    <h3>🚭 Adding a Bad Habit</h3>
+    <ul>
+      <li>Type the habit name (e.g., "Smoking") → tap <strong>+Add</strong></li>
+      <li>A live counter starts showing <em>X d Y h Z m</em></li>
+    </ul>
+
+    <h3>📊 Each Habit Card Shows</h3>
+    <ul>
+      <li><strong>Live Clean Timer</strong> (days, hours, minutes)</li>
+      <li><strong>Best Streak</strong> — your record</li>
+      <li><strong>Relapses</strong> — count of slips</li>
+      <li><strong>Progress bar</strong> to next milestone</li>
+      <li>Milestones: 1, 3, 7, 14, 30, 60, 90, 180, 365 days</li>
+    </ul>
+
+    <h3>🚨 "I Need Help" — Panic Button</h3>
+    <p>When you have a craving, tap <strong>I Need Help</strong>. The AI instantly becomes an <strong>emergency addiction coach</strong> with intense, personalized motivation based on your clean days.</p>
+
+    <h3>💔 "I Relapsed"</h3>
+    <p>If you slip up, tap <strong>I Relapsed</strong>. Confirm → counter resets → the AI sends supportive recovery message + offers to walk you through restart.</p>
+
+    <h3>🗑️ Delete</h3>
+    <p>Tap the trash icon → confirm → removes the habit tracker completely.</p>
+  </section>
+
+  <!-- 14. TASKS -->
+  <section id="tasks" class="chapter">
+    <h2>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+      14. Daily Tasks
+    </h2>
+    <p>In <strong>Sidebar</strong> → <strong>Daily Tasks</strong>.</p>
+
+    <h3>🤖 AI Tasks</h3>
+    <p>Every day, 4 AI-generated tasks appear automatically (personalized to your habits). They are marked with a purple <strong>AI</strong> tag.</p>
+
+    <h3>✍️ My Tasks</h3>
+    <p>Tap <strong>+ Add My Task</strong> → type → save. Tagged with cyan <strong>Mine</strong>. You can delete them (with Undo toast).</p>
+
+    <h3>📊 Progress</h3>
+    <p>Top bar shows <strong>X / Y done</strong> with a progress bar. Complete all → confetti + celebration.</p>
+
+    <h3>🔄 Auto Reset</h3>
+    <p>At midnight, tasks reset and new AI tasks are generated.</p>
+  </section>
+
+  <!-- 15. LIBRARY -->
+  <section id="library" class="chapter">
+    <h2>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+      15. GRITGO Digital Library
+    </h2>
+    <p>In <strong>Sidebar</strong> → <strong>GRITGO Digital Library</strong>.</p>
+
+    <h3>📚 20 Books Included</h3>
+    <ul>
+      <li>⚛️ Atomic Habits</li>
+      <li>👑 48 Laws of Power</li>
+      <li>💰 Rich Dad Poor Dad</li>
+      <li>7️⃣ The 7 Habits</li>
+      <li>🏦 The Psychology of Money</li>
+      <li>🧠 Deep Work</li>
+      <li>💎 Think and Grow Rich</li>
+      <li>🤝 How to Win Friends</li>
+      <li>🌱 Mindset</li>
+      <li>🧘 The Power of Now</li>
+      <li>🔥 The Subtle Art</li>
+      <li>🐸 Eat That Frog</li>
+      <li>🔄 The Power of Habit</li>
+      <li>💪 Grit</li>
+      <li>🛡️ Ego is the Enemy</li>
+      <li>🦅 The Four Agreements</li>
+      <li>🏺 The Richest Man in Babylon</li>
+      <li>⚔️ The Art of War</li>
+      <li>🏛️ Meditations</li>
+      <li>🕯️ Man's Search for Meaning</li>
+    </ul>
+
+    <h3>📖 How to Use</h3>
+    <ul>
+      <li>Tap any book card to open it</li>
+      <li>See all chapters with detailed <strong>rule bullets</strong> (2-5 rules per chapter)</li>
+      <li>Tap <strong>Ask AI to explain or add rules</strong> at the top</li>
+    </ul>
+
+    <h3>🤖 Book AI Chat</h3>
+    <ul>
+      <li>Ask "Explain chapter 3" — AI explains in detail</li>
+      <li>Say <strong>"Add these rules to my tracker"</strong> — the AI adds them to your Book Rules Tracker</li>
+    </ul>
+  </section>
+
+  <!-- 16. BOOK RULES -->
+  <section id="bookrules" class="chapter">
+    <h2>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+      16. Book Rules Tracker
+    </h2>
+    <p>In <strong>Sidebar</strong> → <strong>Book Rules Tracker</strong>.</p>
+
+    <h3>📋 What It Is</h3>
+    <p>Instead of generic habits, you can track rules you've learned from books (via AI Book Chat). Each rule becomes a daily checklist item.</p>
+
+    <h3>📊 Stats</h3>
+    <ul>
+      <li><strong>Day Streak</strong> — days you completed all rules</li>
+      <li><strong>Perfect Days</strong> — count of 100% days</li>
+      <li><strong>Overall %</strong> — all-time completion rate</li>
+      <li><strong>Today's Progress</strong> — X / Y done</li>
+    </ul>
+
+    <h3>✅ Daily Check</h3>
+    <p>Tap the checkbox next to each rule to complete it. Deletes with confirmation.</p>
+  </section>
+
+  <!-- 17. INSIGHTS -->
+  <section id="insights" class="chapter">
+    <h2>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="20" x2="12" y2="10"></line><line x1="18" y1="20" x2="18" y2="4"></line><line x1="6" y1="20" x2="6" y2="16"></line></svg>
+      17. Extras & Insights
+    </h2>
+    <p>Tap <strong>Extras & Insights</strong> on home. This is your dashboard.</p>
+
+    <h3>🌟 Daily Motivation</h3>
+    <ul>
+      <li>New quote every day from 200+ options</li>
+      <li><strong>Next Text</strong> — get another quote</li>
+      <li><strong>Save</strong> — save today's quote</li>
+    </ul>
+
+    <h3>🏎️ Bugatti Speedometer Gauge</h3>
+    <ul>
+      <li>Shows your <strong>overall challenge %</strong></li>
+      <li><strong>Hold down on it</strong> → needle revs to redline with V8 engine sound + screen vibration!</li>
+      <li>Pure satisfying eye-candy.</li>
+    </ul>
+
+    <h3>⏱️ Time Attack Countdown</h3>
+    <p>Below the gauge, a live countdown (Days : Hours : Mins : Secs) to your challenge end date.</p>
+
+    <h3>📈 Habit Success Rate</h3>
+    <p>Each habit's % completion since the start, with color coding (green/yellow/red).</p>
+
+    <h3>📊 30-Day Habit Trends</h3>
+    <p>Bar chart comparing "Past Half" vs "Recent Half" for each habit. Shows:</p>
+    <ul>
+      <li><strong>Most Improved</strong> habit</li>
+      <li><strong>Needs Attention</strong> habit</li>
+    </ul>
+
+    <h3>🏆 Achievements Badges</h3>
+    <ul>
+      <li><strong>First Step</strong> — 1 perfect day</li>
+      <li><strong>7-Day Streak</strong></li>
+      <li><strong>30-Day Streak</strong></li>
+      <li><strong>10 Perfect Days</strong></li>
+    </ul>
+
+    <h3>📅 This Month Mini Calendar</h3>
+    <p>See which days of the current month were perfect (blue) vs missed.</p>
+
+    <h3>🔥 Habit Streaks (Per-Habit)</h3>
+    <p>Every habit's current streak, best streak, and badge. Milestones: 3, 7, 14, 30, 60, 100 days (Starter, Week Warrior, Fortnight, Monthly Master, Unstoppable, Legend).</p>
+
+    <h3>📸 Report Card Generator</h3>
+    <ul>
+      <li><strong>Daily</strong> — image of today's stats</li>
+      <li><strong>Weekly</strong> — image of last 7 days</li>
+      <li>Save or share as PNG (Instagram-ready!)</li>
+    </ul>
+
+    <h3>😊 Mood Tracker</h3>
+    <p>Rate today's mood: <strong>Happy / Okay / Tired / Stressed</strong>. Stored permanently.</p>
+
+    <h3>📓 Today's Journal</h3>
+    <p>See section 18 below.</p>
+  </section>
+
+  <!-- 18. JOURNAL -->
+  <section id="journal" class="chapter">
+    <h2>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+      18. Journal & Mood
+    </h2>
+
+    <h3>📓 Daily Journal (in Extras)</h3>
+    <ul>
+      <li>Type anything about your day</li>
+      <li>Or tap the <strong>🎤 mic icon</strong> inside the textarea to speak</li>
+      <li>Tap <strong>Save</strong> → the AI reads it and replies with motivation</li>
+      <li>Once saved, the entry becomes read-only</li>
+      <li>Tap <strong>✏️ Edit</strong> (green) to unlock it → edit → Update Journal</li>
+      <li>Tap <strong>✕ Cancel</strong> (red) while editing to restore original</li>
+    </ul>
+
+    <h3>😊 Mood Tracker</h3>
+    <p>Pick one of 4 moods daily. Used by the AI to understand your emotional state across all reports.</p>
+
+    <h3>📅 History (Sidebar)</h3>
+    <p>Sidebar → <strong>Daily Note & Sleep History</strong> → see all past journal entries + sleep hours in one scrollable list. Tap trash on any entry to delete.</p>
+  </section>
+
+  <!-- 19. GALLERY -->
+  <section id="gallery" class="chapter">
+    <h2>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+      19. Goals & Photos
+    </h2>
+    <p>In <strong>Sidebar</strong> → <strong>Goals & Photo Gallery</strong>.</p>
+
+    <h3>🎯 SMART Goal Tab</h3>
+    <ul>
+      <li>Type your big goal (e.g., "Lose 10 kg in 3 months")</li>
+      <li>Tap <strong>Generate Daily Habits</strong></li>
+      <li>AI breaks it into 3-5 daily habits</li>
+      <li>Tap each to add it to your list</li>
+    </ul>
+
+    <h3>📸 Photo Gallery Tab</h3>
+    <ul>
+      <li>Tap <strong>Upload Photo from Gallery</strong></li>
+      <li>Photo is saved with the <strong>Day number</strong> label</li>
+      <li>Grid view of all photos</li>
+      <li>Tap the <strong>×</strong> on any photo to delete</li>
+    </ul>
+
+    <h3>📅 Photo Timeline (Full Year)</h3>
+    <p>In <strong>Extras & Insights</strong> → <strong>Yearly Heatmap & Photos</strong> → <strong>Photo Timeline</strong> tab:</p>
+    <ul>
+      <li>Add 1 photo per day (e.g., body progress, gym, meal)</li>
+      <li>Tap any photo to open full size</li>
+      <li>Delete with trash button</li>
+    </ul>
+
+    <h3>🗓️ Yearly Heatmap</h3>
+    <p>In <strong>Yearly View</strong> → <strong>Heatmap</strong> tab: see a full 12-month grid view of daily consistency.</p>
+  </section>
+
+  <!-- 20. THEMES -->
+  <section id="themes" class="chapter">
+    <h2>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22a10 10 0 1 1 10-10c0 5-4 10-10 10z"></path><circle cx="7.5" cy="10.5" r="1.5"></circle><circle cx="12" cy="7.5" r="1.5"></circle><circle cx="16.5" cy="10.5" r="1.5"></circle></svg>
+      20. Themes & Customization
+    </h2>
+
+    <h3>🎨 App Themes (50+)</h3>
+    <ul>
+      <li>Tap the <strong>palette icon</strong> in the header</li>
+      <li>Or <strong>Settings</strong> → <strong>Choose App Theme</strong></li>
+      <li>50+ themes: Default Aqua, Crimson Gold, Sapphire Amber, Emerald Coral, Amethyst Lime, etc.</li>
+      <li>Tap any theme to <strong>preview</strong> → Apply or Cancel</li>
+      <li>Tap <strong>Default App Theme</strong> to reset</li>
+    </ul>
+
+    <h3>🌗 Light / Dark / Auto Mode</h3>
+    <ul>
+      <li>Light theme switches white backgrounds + dark text</li>
+      <li>In Settings, <strong>Auto Theme</strong> switches based on time (6 AM - 6 PM = light, rest = dark)</li>
+    </ul>
+
+    <h3>🎨 Chat Themes</h3>
+    <p>In the AI chat → palette icon:</p>
+    <ul>
+      <li>Change background color (or upload custom image)</li>
+      <li>User bubble color (50+ options)</li>
+      <li>AI bubble color (50+ options)</li>
+      <li><strong>Reset Default</strong> to restore</li>
+    </ul>
+
+    <h3>🔊 Sound & Vibration</h3>
+    <p>Settings → toggle <strong>Sound / Vibration</strong> ON/OFF.</p>
+  </section>
+
+  <!-- 21. LANGUAGE -->
+  <section id="language" class="chapter">
+    <h2>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+      21. Language System (100+ Languages)
+    </h2>
+    <p>Inside AI chat → tap the <strong>language dropdown</strong> → search by country name → tap a flag → done.</p>
+
+    <h3>🌐 Supported (100+ languages)</h3>
+    <p>English (US/UK), বাংলা, हिन्दी, Español, Français, Deutsch, 中文, 日本語, 한국어, العربية, Русский, Português, Italiano, Türkçe, Tiếng Việt, Bahasa, ไทย, Nederlands, Polski, Svenska, اردو, தமிழ், తెలుగు, മലയാളം, ગુજરાતી, मराठी, ਪੰਜਾਬੀ, فارسی, עברית, Ελληνικά, Dansk, Suomi, Norsk, Čeština, Magyar, Română, Українська, Български, and 60+ more.</p>
+
+    <h3>🎤 Voice Languages</h3>
+    <ul>
+      <li>Voice input uses the selected language</li>
+      <li>TTS (Read Loud) also uses it</li>
+      <li>The AI <strong>replies in the same language</strong> you write/speak</li>
+    </ul>
+
+    <div class="callout tip">
+      <h4>💡 Pro Tip — Timezone Aware</h4>
+      <p>AI Master Time Planner uses your country's timezone to schedule plans. Select the right language to get accurate time alignment!</p>
+    </div>
+  </section>
+
+  <!-- 22. SETTINGS -->
+  <section id="settings" class="chapter">
+    <h2>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+      22. Settings & Data Management
+    </h2>
+    <p>Open <strong>Sidebar</strong> → <strong>Settings</strong>.</p>
+
+    <h3>⚙️ Inside Settings</h3>
+    <ul>
+      <li><strong>Choose App Theme</strong> — 50+ themes with preview</li>
+      <li><strong>Sound / Vibration</strong> — toggle ON/OFF</li>
+      <li><strong>AI Coach Persona</strong> — Normal / Strict / Zen / Funny</li>
+      <li><strong>Auto Theme</strong> — day/night auto switch</li>
+      <li><strong>Challenge Name / Duration / Start Date / Motivation</strong> — edit anytime</li>
+      <li><strong>Day Start / Day End time</strong> — when your day rolls over</li>
+    </ul>
+
+    <h3>💾 Backup Data</h3>
+    <ul>
+      <li>Tap <strong>Backup Data (Copy Text)</strong></li>
+      <li>A JSON string appears — tap <strong>Copy Text</strong></li>
+      <li>Save it in your Notes app, Google Keep, or WhatsApp "Message Yourself"</li>
+      <li>Backs up: challenge, habits, logs, water, sleep, moods, notes, settings</li>
+    </ul>
+
+    <h3>📥 Restore Data</h3>
+    <ul>
+      <li>Tap <strong>Restore Data (Paste Text)</strong></li>
+      <li>Paste the JSON backup</li>
+      <li>Tap <strong>Auto Paste from Clipboard</strong> if available</li>
+      <li>Tap <strong>Restore Text</strong> → reloads with all your data</li>
+    </ul>
+
+    <h3>📊 Export CSV (Excel)</h3>
+    <ul>
+      <li>Tap <strong>Export Data as CSV</strong></li>
+      <li>Copy the text → paste into Excel/Google Sheets</li>
+      <li>Columns: Date, Habit Name, Category, Status</li>
+    </ul>
+
+    <h3>🗑️ Reset All Data</h3>
+    <ul>
+      <li>Tap <strong>Reset All Data</strong> → confirm</li>
+      <li>Wipes EVERYTHING: habits, water, sleep, chat, theme, profile, quote, everything</li>
+      <li>App reloads as fresh start</li>
+    </ul>
+
+    <div class="callout warning">
+      <h4>⚠️ CRITICAL — Backup Regularly</h4>
+      <p>Clearing browser cache/storage will delete all data. <strong>Backup once a week</strong> and store the text somewhere safe (not just clipboard).</p>
+    </div>
+  </section>
+
+  <!-- 23. FAQ -->
+  <section id="faq" class="chapter">
+    <h2>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+      23. FAQ & Pro Tips
+    </h2>
+
+    <h3>❓ What if I miss a day?</h3>
+    <p>Tap the past day in the heatmap → <strong>Past Edit</strong> → check the habits you actually did. Streak recalculates.</p>
+
+    <h3>❓ Why is the AI Voice not working?</h3>
+    <p>Grant <strong>microphone permission</strong> to the browser. Also ensure internet is on. Some browsers (Chrome) work better than others.</p>
+
+    <h3>❓ How does the Streak work?</h3>
+    <p>Streak = consecutive days of <strong>100% completion</strong>. Miss one day → streak resets to 0. But your <strong>Perfect Days count stays</strong>.</p>
+
+    <h3>❓ Why is the AI not adding habits when I ask?</h3>
+    <p>Phrase it clearly: "Add habit: Drink 2L Water". The AI returns a JSON array that the app catches. If it doesn't work, try "Add these habits: X, Y, Z".</p>
+
+    <h3>❓ Can I use multiple challenges?</h3>
+    <p>No — one active challenge at a time. But you can <strong>change the challenge name/duration</strong> in Settings, or <strong>Backup → Reset → new challenge</strong> (then restore old backup later if needed).</p>
+
+    <h3>❓ What happens if I clear browser cache?</h3>
+    <p>All local data is lost. <strong>Restore from your backup text</strong> you saved earlier.</p>
+
+    <h3>❓ Does the AI remember previous conversations?</h3>
+    <p>Yes — it keeps the last 10 messages as context. But clearing chat wipes this memory.</p>
+
+    <h3>❓ Why is a habit dimmed and uncheckable?</h3>
+    <p>That's the <strong>Chain Lock</strong> — the previous habit isn't done yet. Do it in order or tap the previous one first.</p>
+
+    <h3>❓ Can I edit a past message in the chat?</h3>
+    <p>Yes — long-press → <strong>Edit</strong> → the message returns to the input, edit it, then send. The message and everything after it is deleted before re-sending.</p>
+
+    <h3>❓ What's the "speedometer hold" thing?</h3>
+    <p>In <strong>Extras & Insights</strong>, hold your finger on the gauge → the needle revs + engine sound + vibration. It's a fun Easter egg! 🏎️</p>
+
+    <h3>❓ How do I add book rules to tracking?</h3>
+    <p>Library → open any book → <strong>Ask AI</strong> → tell AI "Add these rules to my tracker" → they appear in <strong>Book Rules Tracker</strong> in the sidebar.</p>
+
+    <h3>❓ Can I export my data to Excel?</h3>
+    <p>Yes — Settings → <strong>Export Data as CSV</strong>. Copy → paste into Excel or Google Sheets.</p>
+
+    <div class="callout tip">
+      <h4>💡 Pro Tips</h4>
+      <ul style="margin-top: 8px;">
+        <li><strong>Backup weekly</strong> — 30 seconds of copy-paste saves months of data</li>
+        <li><strong>Use voice input</strong> for journaling when tired — speaking is faster than typing</li>
+        <li><strong>Set the AI Persona</strong> to Strict for accountability, Zen for stress</li>
+        <li><strong>Use the timer</strong> for pomodoro-style focus sessions (25 min)</li>
+        <li><strong>Check AI Performance Review</strong> every Sunday for a weekly reset</li>
+        <li><strong>Take progress photos</strong> — visual proof is the best motivation</li>
+        <li><strong>Save the "Photo Timeline"</strong> (1 per day) — builds an epic yearly montage</li>
       </ul>
+    </div>
 
-      <h3>2. Checking Off Habits</h3>
-      <p>Tap the numbered box (e.g., 1, 2, 3) next to a habit to mark it done. You will get a satisfying sound and haptic vibration. If you accidentally check it, just tap it again to uncheck.</p>
+    <div class="callout gold" style="margin-top: 40px;">
+      <h4>🏆 Final Words</h4>
+      <p>"Success is the sum of small efforts, repeated day in and day out."</p>
+      <p style="margin-top: 10px;">GRITGO gives you the tools. <strong>You</strong> give the effort. Show up, day after day, and watch your life transform.</p>
+    </div>
+  </section>
 
-      <h3>3. The Heatmap</h3>
-      <p>The grid of small boxes represents your entire challenge.</p>
-      <ul>
-        <li>The more habits you complete in a day, the brighter the box becomes (Cyan color).</li>
-        <li>Clicking on a specific day's box lets you open a popup to view or edit that day (Past Edit).</li>
-      </ul>
-    </section>
+</main>
 
-    <!-- TIMER -->
-    <section id="timer" class="chapter">
-      <h2>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-        Advanced Timer
-      </h2>
-      <p>To help you focus, there is a clock (⏱️) icon next to each habit.</p>
-      <ul>
-        <li>Clicking the clock icon opens the timer settings.</li>
-        <li>You can set preset times (5m, 30m, 1h, 3h) or enter a custom time.</li>
-        <li>When the timer ends, an alarm sounds and the habit is <strong>automatically checked off</strong>.</li>
-      </ul>
-    </section>
-
-    <!-- AI COACH -->
-    <section id="ai" class="chapter">
-      <h2>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="10" rx="2"></rect><circle cx="12" cy="5" r="2"></circle><path d="M12 7v4"></path></svg>
-        Smart AI Coach
-      </h2>
-      <p>Your personal AI coach. It analyzes your data and provides motivation whenever you need it.</p>
-
-      <h3>Key Features:</h3>
-      <ul>
-        <li><strong>🎤 Voice Input:</strong> Speak in any language. The AI will understand and reply in the same language.</li>
-        <li><strong>📷 Send Photos:</strong> Send images (like a meal or gym photo) to the AI for analysis.</li>
-        <li><strong>AI Persona:</strong> Go to Settings to change the AI's personality (Strict, Zen, Funny, Normal).</li>
-        <li><strong>Chat Controls:</strong> Swipe right on any message to reply. Long-press a message to copy, edit, or delete it.</li>
-      </ul>
-
-      <div class="callout">
-        <h4>🤖 AI Habit Generator</h4>
-        <p>If you tell the AI "Give me 5 healthy habits to lose weight", it will intelligently generate them and add them directly to your habit list!</p>
-      </div>
-    </section>
-
-    <!-- HEALTH TRACKERS -->
-    <section id="health" class="chapter">
-      <h2>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
-        Health Trackers (Water & Sleep)
-      </h2>
-      
-      <h3>💧 Daily Water Tracker (HydroFlow)</h3>
-      <p>Go to "Daily Water Tracker" to monitor your hydration.</p>
-      <ul>
-        <li>Use the <strong>+250ml Glass</strong> and <strong>+500ml Bottle</strong> buttons to log water.</li>
-        <li>When you reach your daily goal, you'll get a celebration animation and a confetti blast.</li>
-      </ul>
-
-      <h3>😴 Sleep Tracker</h3>
-      <p>Open "Weekly Progress & Sleep Tracker" to log your sleep.</p>
-      <ul>
-        <li>Select how many hours you slept.</li>
-        <li>The AI will analyze your "Brain State" (Tired, Fresh, Jammed) and give you personalized feedback.</li>
-      </ul>
-    </section>
-
-    <!-- QUIT HABIT -->
-    <section id="quit" class="chapter">
-      <h2>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line></svg>
-        Quit Habit Tracker
-      </h2>
-      <p>This section is designed to help you break bad habits (e.g., smoking, junk food).</p>
-      <ul>
-        <li>Go to <strong>Extras & Insights</strong> and open the Quit Tracker.</li>
-        <li>Add your bad habit. It will track your <em>Clean Streak</em> in days, hours, and minutes.</li>
-        <li><strong>🚨 I Need Help Button:</strong> If you have a sudden craving, tap this button. The AI will instantly step in as an emergency coach to talk you out of it.</li>
-      </ul>
-    </section>
-
-    <!-- WORKOUT -->
-    <section id="workout" class="chapter">
-      <h2>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 5v14M18 5v14M6 12h12M3 8v8M21 8v8"></path></svg>
-        Workout Tracker
-      </h2>
-      <p>Track your gym or home workouts with precision.</p>
-      <ul>
-        <li>Log the <strong>Sets, Reps, and Weight</strong> for each exercise.</li>
-        <li>Check off completed sets to automatically start a <strong>90-second Rest Timer</strong>.</li>
-        <li>Your heaviest lifted weight is automatically saved as a <strong>PR (Personal Record)</strong>.</li>
-        <li>Track your total volume and workout history over time.</li>
-      </ul>
-    </section>
-
-    <!-- INSIGHTS -->
-    <section id="insights" class="chapter">
-      <h2>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="20" x2="12" y2="10"></line><line x1="18" y1="20" x2="18" y2="4"></line><line x1="6" y1="20" x2="6" y2="16"></line></svg>
-        Extras & Insights
-      </h2>
-      <p>Your analytics dashboard. Here you can see the big picture of your progress.</p>
-      <ul>
-        <li><strong>Daily Motivation:</strong> Get a new motivational quote every day.</li>
-        <li><strong>30-Day Habit Trends:</strong> View beautiful charts to see which habits are improving and which need work.</li>
-        <li><strong>Report Card:</strong> Generate a shareable image of your stats to post on Instagram or send to friends.</li>
-        <li><strong>AI Master Time Planner:</strong> Tell the AI your goal, and it will build a time-blocked daily routine for you.</li>
-      </ul>
-    </section>
-
-    <!-- SETTINGS -->
-    <section id="settings" class="chapter">
-      <h2>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
-        Settings & Backup
-      </h2>
-      <p>Customize your app and keep your data safe.</p>
-      <ul>
-        <li><strong>App Themes:</strong> Choose from over 50+ themes to completely change the look of the app.</li>
-        <li><strong>Data Backup:</strong> To save your progress, click <span class="ui-btn" style="background:var(--green); color:white;">Backup Data</span> and copy the text to a safe place.</li>
-        <li><strong>CSV Export:</strong> Export your habit data to an Excel/Google Sheets file.</li>
-      </ul>
-
-      <div class="callout warning">
-        <h4>⚠️ Important Warning</h4>
-        <p>Clearing your browser cache or data will delete your app progress. Always keep a backup text saved in your notes app once a week.</p>
-      </div>
-    </section>
-
-    <!-- FAQ -->
-    <section id="faq" class="chapter">
-      <h2>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
-        FAQ & Pro Tips
-      </h2>
-      
-      <h3>Q: What if I miss a day?</h3>
-      <p>A: Don't stress! Go to the Heatmap, click on the past day, and use "Past Edit" to check off any habits you completed but forgot to log.</p>
-
-      <h3>Q: Why is the AI Voice not working?</h3>
-      <p>A: Make sure you have granted microphone permissions to your browser. You also need an active internet connection for the AI to process your speech.</p>
-
-      <h3>Q: How does the Streak work?</h3>
-      <p>A: Your streak increases for every consecutive day you complete 100% of your habits. If you miss a single day, the streak resets to 0 (but your Perfect Days count stays safe).</p>
-
-      <div class="callout tip" style="margin-top: 40px; border-left-color: var(--gold); background: rgba(241, 196, 15, 0.05);">
-        <h4 style="color: var(--gold);">🏆 Final Words</h4>
-        <p>"Success is the sum of small efforts, repeated day in and day out." Keep showing up, and GRITGO will be right here with you.</p>
-      </div>
-    </section>
-
-  </main>
-
-  <script>
-    // Smooth Scrolling & Active State for Sidebar Links
-    document.querySelectorAll('.nav-list a').forEach(link => {
-      link.addEventListener('click', function(e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href');
-        const targetSection = document.querySelector(targetId);
-        
-        if (targetSection) {
-          window.scrollTo({
-            top: targetSection.offsetTop - 20,
-            behavior: 'smooth'
-          });
-          
-          // Close mobile menu on click
-          if(window.innerWidth <= 768) {
-            document.querySelector('.sidebar').classList.remove('open');
-          }
-        }
-      });
+<script>
+  document.querySelectorAll('.nav-list a').forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href');
+      const targetSection = document.querySelector(targetId);
+      if (targetSection) {
+        window.scrollTo({ top: targetSection.offsetTop - 20, behavior: 'smooth' });
+        if (window.innerWidth <= 900) document.querySelector('.sidebar').classList.remove('open');
+      }
     });
+  });
 
-    // Intersection Observer for highlighting current chapter in sidebar
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          document.querySelectorAll('.nav-list a').forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === `#${entry.target.id}`) {
-              link.classList.add('active');
-            }
-          });
-        }
-      });
-    }, { rootMargin: '-20% 0px -80% 0px' });
-
-    document.querySelectorAll('.chapter').forEach(chapter => {
-      observer.observe(chapter);
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        document.querySelectorAll('.nav-list a').forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${entry.target.id}`) link.classList.add('active');
+        });
+      }
     });
-  </script>
+  }, { rootMargin: '-20% 0px -80% 0px' });
+
+  document.querySelectorAll('.chapter').forEach(chapter => observer.observe(chapter));
+</script>
 </body>
 </html>
